@@ -45,6 +45,10 @@ const userSchema = new Schema({
         ],
         unique: true,
     },
+    semester: {
+        type: Number,
+        required: true, 
+      },
     phone_no:{
         type: String,
         lowercase: true,

@@ -4,12 +4,12 @@ const { mockDataTeam, mockDataUsers} = require("../data/mockData.js");
 exports.register = async (req, res, next) => {
     try {
         console.log("---req body---", req.body);
-        const { email, password, address, cms_id, phone_no } = req.body;
+        const {first_name, last_name, semester, email, password, address, cms_id, phone_no } = req.body;
         const duplicate = await UserServices.getUserByEmail(email);
         if (duplicate) {
             throw new Error(`UserName ${email}, Already Registered`)
         }
-        const response = await UserServices.registerUser(email, password, address, cms_id, phone_no);
+        const response = await UserServices.registerUser(first_name, last_name, semester, email, password, address, cms_id, phone_no);
 
         res.json({ status: true, success: 'User registered successfully' });
 
@@ -67,4 +67,19 @@ exports.users = async (req, res, next) => {
     console.log("---> err -->", err);
     next(err);
 }
-  }
+}
+
+exports.user_id = async (req, res, next) => {
+
+
+    try {
+        const email = req.params.id;
+
+        const users = await UserServices.getUserByEmail(email);
+        res.status(200).json(users);
+    }
+    catch (err) {
+    console.log("---> err -->", err);
+    next(err);
+}
+}

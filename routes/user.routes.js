@@ -7,6 +7,8 @@ router.post("/login", UserController.login);
 
 router.get("/users",UserController.users);
 
+router.get("/user/:id",UserController.user_id);
+
 // API endpoint to get team data
 router.get("/team",UserController.team);
 
