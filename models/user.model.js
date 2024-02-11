@@ -20,6 +20,9 @@ const userSchema = new Schema({
             "Name format is not correct",
         ],
     },
+    father_name:{
+        type: String,
+    },
     email: {
         type: String,
         lowercase: true,
@@ -45,9 +48,13 @@ const userSchema = new Schema({
         ],
         unique: true,
     },
+    degree_name:{
+        type: String,
+        required: [true, "Degree Name can't be empty"],
+    },
     semester: {
         type: Number,
-        required: true, 
+        required: [true, "Semester can't be empty"],
       },
     phone_no:{
         type: String,
@@ -62,7 +69,7 @@ const userSchema = new Schema({
     address:{
         type: String,
         lowercase: true,
-        required: true,
+        required: [true, "Address can't be empty"],
     },
     is_subscribed:{
         type: Boolean,
