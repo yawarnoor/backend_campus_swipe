@@ -93,7 +93,7 @@ userSchema.pre("save",async function(){
     }catch(err){
         throw err;
     }
-});
+}); 
 
 
 //used while signIn decrypt
