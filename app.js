@@ -12,6 +12,7 @@ app.use(cors());
 
 app.use(bodyParser.json())
 
+// Hi
 app.use("/",UserRoute);
 app.use("/",TransactionRoute);
 app.use("/",DeviceRoute);
