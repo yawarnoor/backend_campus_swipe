@@ -9,7 +9,7 @@ class TransactionServices {
             // Check if the user with the provided cms_id exists
             const user = await UserModel.findOne({ cms_id: cms_id });
             if (!user) {
-                throw new Error('User not found');
+                throw new Error(`User ${cms_id} not found`);
             }
     
             // Check if the device with the provided device_id exists

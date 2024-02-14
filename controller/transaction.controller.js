@@ -12,10 +12,6 @@ exports.post_transactions = async (req, res, next) => {
         console.log("---> err -->", err);
         next(err);
     }
-    // catch (error) {
-    //     console.error('Error saving transaction:', error);
-    //     res.status(500).json({ message: 'Internal server error' });
-    // }
 }
 
 exports.get_transactions = async (req, res, next) => {
@@ -24,10 +20,21 @@ exports.get_transactions = async (req, res, next) => {
         const transactions = await TransactionServices.getAllTransactions();
         res.status(200).json(transactions);
     }
-    //  catch (error) {
-    //     console.error('Error retrieving transactions:', error);
-    //     res.status(500).json({ message: 'Internal server error' });
-    // }
+    catch (err) {
+    console.log("---> err -->", err);
+    next(err);
+}
+}
+
+exports.transactions_id = async (req, res, next) => {
+
+
+    try {
+        const cms_id = req.params.id;
+
+        const users = await TransactionServices.getTransactionsByCMS(cms_id);
+        res.status(200).json(users);
+    }
     catch (err) {
     console.log("---> err -->", err);
     next(err);

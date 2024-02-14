@@ -18,6 +18,7 @@ const transactionSchema = new Schema({
   },
   time: {
       type: String,
+      default: new Date().toISOString()
   },
   
   device_id: {
