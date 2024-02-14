@@ -6,31 +6,33 @@ const { Schema } = mongoose;
 const userSchema = new Schema({
     first_name:{
         type: String,
-        lowercase: true,
         match: [
             /^[a-zA-Z-' ]+$/,
-            "Name format is not correct",
+            "First Name format is not correct",
         ],
     },
     last_name:{
         type: String,
-        lowercase: true,
         match: [
             /^[a-zA-Z-' ]+$/,
-            "Name format is not correct",
+            "Last Name format is not correct",
         ],
     },
     father_name:{
         type: String,
+        match: [
+            /^[a-zA-Z-' ]+$/,
+            "Father Name format is not correct",
+        ],
     },
     email: {
         type: String,
         lowercase: true,
-        required: [true, "userName can't be empty"],
+        required: [true, "email can't be empty"],
         // @ts-ignore
         match: [
             /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/,
-            "userName format is not correct",
+            "email format is not correct",
         ],
         unique: true,
     },
@@ -69,7 +71,6 @@ const userSchema = new Schema({
     address:{
         type: String,
         lowercase: true,
-        required: [true, "Address can't be empty"],
     },
     is_subscribed:{
         type: Boolean,
