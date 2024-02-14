@@ -7,7 +7,7 @@ exports.register = async (req, res, next) => {
         const {first_name, last_name, semester, email, password, address, cms_id, phone_no, degree_name, father_name } = req.body;
         const duplicate = await UserServices.getUserByEmail(email);
         if (duplicate) {
-            throw new Error(`UserName ${email}, Already Registered`)
+            throw new Error(`User ${email}, Already Registered`)
         }
         const response = await UserServices.registerUser(first_name, last_name, semester, email, password, address, cms_id, phone_no, degree_name, father_name );
 
