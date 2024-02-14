@@ -108,5 +108,5 @@ userSchema.methods.comparePassword = async function (candidatePassword) {
     }
 };
 
-const UserModel = db.model('user',userSchema);
-module.exports = UserModel;
+const user = db.model('user',userSchema);
+module.exports = user;
