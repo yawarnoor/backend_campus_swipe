@@ -20,6 +20,7 @@ class CardServices {
             console.log(err);
         }
     }
+    
 }
 
 module.exports = CardServices;
