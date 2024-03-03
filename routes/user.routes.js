@@ -32,6 +32,29 @@ router.post('/checkSubscription', async (req, res) => {
       res.status(500).json({ message: 'Internal server error' });
     }
   });
+
+
+  // Update subscription status
+router.put('/updateSubscription/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { is_subscribed } = req.body;
+
+    // Find the user based on id
+    const user = await User.findByIdAndUpdate(id, { is_subscribed }, { new: true });
+
+    if (user) {
+      // User found and subscription status updated
+      res.json({ message: 'Subscription status updated successfully', user });
+    } else {
+      // User not found
+      res.status(404).json({ message: 'User not found' });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
   
 
 module.exports = router;
