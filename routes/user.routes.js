@@ -10,6 +10,27 @@ router.get("/users",UserController.users);
 
 router.get("/user/:id",UserController.user_id);
 
+router.get('/users/subscribed', async (req, res) => {
+  try {
+      const totalStudents = await User.countDocuments();
+      const subscribedStudents = await User.countDocuments({ is_subscribed: true });
+      const unsubscribedStudents = totalStudents - subscribedStudents;
+
+      const subscribedPercentage = (subscribedStudents / totalStudents) * 100;
+      const unsubscribedPercentage = (unsubscribedStudents / totalStudents) * 100;
+
+      res.json({
+          totalStudents,
+          subscribedStudents,
+          unsubscribedStudents,
+          subscribedPercentage,
+          unsubscribedPercentage
+      });
+  } catch (error) {
+      res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 // API endpoint to get team data
 router.get("/team",UserController.team);
 

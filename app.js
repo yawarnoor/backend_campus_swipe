@@ -7,7 +7,7 @@ const DeviceRoute = require("./routes/device.routes");
 const SubscriptionRoute = require("./routes/subscripton.routes.js");
 const CardRoute = require("./routes/card.routes.js");
 const EmailRoute = require("./routes/email.routes.js");
-const Transaction = require("./models/transaction.model")
+const Transaction = require("./models/transaction.model");
 
 const app = express();
 
