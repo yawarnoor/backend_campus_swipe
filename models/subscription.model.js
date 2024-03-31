@@ -12,7 +12,7 @@ const subscriptionSchema = new Schema({
     },
     duration: {
         type: String,
-        enum: ['7d', '30d', '90d'],
+        enum: ['7d', '15d', '30d'],
         required: true
     },
     subscriptionDate: {
