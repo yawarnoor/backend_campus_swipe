@@ -24,3 +24,28 @@ exports.get_subscriptions = async (req, res, next) => {
     next(err);
 }
 }
+
+exports.getSubscriptionsByCMS = async (req, res, next) => {
+    try {
+        const cmsId  = req.params.cms_id;
+        const subscriptions = await SubscriptionServices.getSubscriptionsByCMS(cmsId);
+        res.status(200).json(subscriptions);
+    } catch (err) {
+        console.log("---> err -->", err);
+        next(err);
+    }
+}
+
+exports.updateSubscriptionDuration = async (req, res, next) => {
+    try {
+        const cmsID = req.params.cms_id;
+        const { duration } = req.body;
+
+        // Find the subscription based on id and update the duration
+        const subscription = await SubscriptionServices.updateSubscriptionDuration(cmsID, duration);
+        res.status(200).json(subscription);
+    } catch (err) {
+        console.log("---> err -->", err);
+        next(err);
+    }
+};
