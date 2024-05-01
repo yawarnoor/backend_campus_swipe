@@ -27,7 +27,7 @@ exports.sendEmail = (req, res) => {
     });
 
     const mailOptions = {
-        from: 'yawarnoor.bscssef20@iba-suk.edu.pk',
+        from: 'campus_swipe@iba-suk.edu.pk',
         to: userEmail,
         subject: 'Invoice CampusSwipe',
         text: 'Please find your invoice attached.',
