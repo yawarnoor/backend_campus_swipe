@@ -44,6 +44,20 @@ class SubscriptionServices {
             throw err;
         }
     }
+
+    static async setSubscriptionDate(cms_id) {
+        try {
+            // Find the subscription by cms_id and update subscriptionDate
+            const subscription = await SubscriptionModel.findOneAndUpdate(
+                { cms_id },
+                { subscriptionDate: new Date() },
+                { new: true }
+            );
+            return subscription;
+        } catch (err) {
+            throw err;
+        }
+    }
     
 }
 
