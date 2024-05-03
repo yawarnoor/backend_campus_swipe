@@ -71,7 +71,7 @@ exports.sendEmailFromWeb = (req, res) => {
     });
 
     const mailOptions = {
-        from: 'shahzamanabbasi.bscssef20@iba-suk.edu.pk',
+        from: 'campus_swipe@iba-suk.edu.pk',
         to: email,
         subject: subject || 'Message from CampusSwipe Web',
         text: message || 'This is a test message from CampusSwipe Web.',
